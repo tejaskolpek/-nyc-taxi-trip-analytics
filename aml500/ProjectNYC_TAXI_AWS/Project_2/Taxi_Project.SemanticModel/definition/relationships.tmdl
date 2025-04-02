@@ -1,0 +1,21 @@
+relationship 7cb216b7-8bd4-4d88-b9ac-972d00344964
+	joinOnDateBehavior: datePartOnly
+	fromColumn: top_10_longest_trips.pickup_datetime
+	toColumn: LocalDateTable_c03f81a0-d57f-44f9-a14c-261ce34dc386.Date
+
+relationship f09b5f15-7dd8-4eaf-bbe4-a8f066be9076
+	joinOnDateBehavior: datePartOnly
+	fromColumn: top_10_longest_trips.dropoff_datetime
+	toColumn: LocalDateTable_01d36455-3a08-474c-8f6c-6e976499b77f.Date
+
+relationship 708bfeaf-57cf-4411-b465-9870084f7f00
+	joinOnDateBehavior: datePartOnly
+	fromColumn: total_revenue_by_day.trip_date
+	toColumn: LocalDateTable_0085439c-60b6-40e2-a58d-051f935500e4.Date
+
+relationship AutoDetected_8c090524-277b-4cc7-ab3d-18860831f3d2
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: peak_pickup_hours.hour_of_day
+	toColumn: avg_trip_distance_by_hour.hour_of_day
+

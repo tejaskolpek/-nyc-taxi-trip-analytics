@@ -1,0 +1,72 @@
+table top_10_longest_trips
+	lineageTag: a803fb9b-bdf5-44b7-b617-c9df23e69ced
+
+	column pickup_datetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cf07b470-63f1-464c-ab64-2ed8dbe54447
+		summarizeBy: none
+		sourceColumn: pickup_datetime
+
+		variation Variation
+			isDefault
+			relationship: 7cb216b7-8bd4-4d88-b9ac-972d00344964
+			defaultHierarchy: LocalDateTable_c03f81a0-d57f-44f9-a14c-261ce34dc386.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dropoff_datetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2422706b-186b-4760-94c1-0ab772acaab4
+		summarizeBy: none
+		sourceColumn: dropoff_datetime
+
+		variation Variation
+			isDefault
+			relationship: f09b5f15-7dd8-4eaf-bbe4-a8f066be9076
+			defaultHierarchy: LocalDateTable_01d36455-3a08-474c-8f6c-6e976499b77f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_distance
+		dataType: double
+		lineageTag: 9dca5d2a-6913-4f92-b1bb-052ed03fdf40
+		summarizeBy: sum
+		sourceColumn: trip_distance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pickup_location_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c8e01b3-ce3a-47d3-905a-a7953763bc15
+		summarizeBy: sum
+		sourceColumn: pickup_location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dropoff_location_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c518fe3-dfc0-482d-a337-5e4c6722df82
+		summarizeBy: sum
+		sourceColumn: dropoff_location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition top_10_longest_trips = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("awsregion=us-east-1;s3outputlocation=s3://mlops-13afe8ab-a794-4f8f-80b6-e210e18b4990/powerbiathena/;profile=default;dsn=Simba Athena", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Source{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    class_taxi_filtered_Schema = AwsDataCatalog_Database{[Name="class_taxi_filtered",Kind="Schema"]}[Data],
+				    top_10_longest_trips_Table = class_taxi_filtered_Schema{[Name="top_10_longest_trips",Kind="Table"]}[Data]
+				in
+				    top_10_longest_trips_Table
+
+	annotation PBI_ResultType = Table
+

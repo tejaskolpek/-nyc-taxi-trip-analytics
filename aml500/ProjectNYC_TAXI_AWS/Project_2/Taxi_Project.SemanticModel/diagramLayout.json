@@ -1,0 +1,165 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 2790,
+            "y": 48.5
+          },
+          "nodeIndex": "top_10_busiest_pickup_locations",
+          "nodeLineageTag": "a7e0f59e-5777-496a-b192-a99e1b565e12",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 54.5
+          },
+          "nodeIndex": "avg_fare_and_tip_by_distance_range",
+          "nodeLineageTag": "6c724434-9433-49aa-867d-64f21864ddb0",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 66.5
+          },
+          "nodeIndex": "avg_tip_percentage_by_payment_type",
+          "nodeLineageTag": "5c263115-948d-41e7-9a65-d4998b52c80a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334,
+            "y": 16.5
+          },
+          "nodeIndex": "avg_trip_distance_by_hour",
+          "nodeLineageTag": "8900b181-b85c-4916-8085-f6bbaa03f946",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136,
+            "y": 54.5
+          },
+          "nodeIndex": "monthly_revenue_trends",
+          "nodeLineageTag": "b1abc12b-446e-4e76-a727-76dabd248cff",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 16.5
+          },
+          "nodeIndex": "peak_pickup_hours",
+          "nodeLineageTag": "54289fdb-96f5-4c33-b91e-bca9918c126a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420,
+            "y": 66.5
+          },
+          "nodeIndex": "top_10_busiest_pickup_locations (2)",
+          "nodeLineageTag": "33c496db-00ce-44ef-8e56-9c164931ada5",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1704,
+            "y": 30.5
+          },
+          "nodeIndex": "top_10_longest_trips",
+          "nodeLineageTag": "a803fb9b-bdf5-44b7-b617-c9df23e69ced",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1988,
+            "y": 66.5
+          },
+          "nodeIndex": "total_revenue_by_day",
+          "nodeLineageTag": "570af763-c2b3-4e14-ac6c-5e4f6765dba4",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2272,
+            "y": 66.5
+          },
+          "nodeIndex": "trips_by_passenger_count",
+          "nodeLineageTag": "528d4337-f6f4-4731-aaf8-0e7e66c1ccbd",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2556,
+            "y": 54.5
+          },
+          "nodeIndex": "trips_with_zero_tips",
+          "nodeLineageTag": "c6dc81ca-a600-432d-8ff9-e1499205bcd8",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

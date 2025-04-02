@@ -1,0 +1,35 @@
+table avg_trip_distance_by_hour
+	lineageTag: 8900b181-b85c-4916-8085-f6bbaa03f946
+
+	column hour_of_day
+		dataType: int64
+		formatString: 0
+		lineageTag: 7aa5defc-9ba6-449f-86e3-4e7fd28fc289
+		summarizeBy: none
+		sourceColumn: hour_of_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_trip_distance
+		dataType: double
+		lineageTag: 0e007482-0bd2-44c6-8a43-34d4e366337f
+		summarizeBy: sum
+		sourceColumn: avg_trip_distance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition avg_trip_distance_by_hour = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("awsregion=us-east-1;s3outputlocation=s3://mlops-13afe8ab-a794-4f8f-80b6-e210e18b4990/powerbiathena/;profile=default;dsn=Simba Athena", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Source{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    class_taxi_filtered_Schema = AwsDataCatalog_Database{[Name="class_taxi_filtered",Kind="Schema"]}[Data],
+				    avg_trip_distance_by_hour_Table = class_taxi_filtered_Schema{[Name="avg_trip_distance_by_hour",Kind="Table"]}[Data]
+				in
+				    avg_trip_distance_by_hour_Table
+
+	annotation PBI_ResultType = Table
+
