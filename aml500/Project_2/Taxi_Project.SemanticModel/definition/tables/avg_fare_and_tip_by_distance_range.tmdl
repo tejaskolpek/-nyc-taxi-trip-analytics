@@ -1,0 +1,44 @@
+table avg_fare_and_tip_by_distance_range
+	lineageTag: 6c724434-9433-49aa-867d-64f21864ddb0
+
+	column distance_range
+		dataType: string
+		lineageTag: 6e2402ac-2fb4-41e7-a0ae-baf6e21af7ae
+		summarizeBy: none
+		sourceColumn: distance_range
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_fare
+		dataType: double
+		lineageTag: 42832bfd-918b-461c-86b1-14742487520a
+		summarizeBy: sum
+		sourceColumn: avg_fare
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_tip
+		dataType: double
+		lineageTag: 22408bc9-d63d-43cd-b9e0-9de117cc0099
+		summarizeBy: sum
+		sourceColumn: avg_tip
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition avg_fare_and_tip_by_distance_range = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("awsregion=us-east-1;s3outputlocation=s3://mlops-13afe8ab-a794-4f8f-80b6-e210e18b4990/powerbiathena/;profile=default;dsn=Simba Athena", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Source{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    class_taxi_filtered_Schema = AwsDataCatalog_Database{[Name="class_taxi_filtered",Kind="Schema"]}[Data],
+				    avg_fare_and_tip_by_distance_range_Table = class_taxi_filtered_Schema{[Name="avg_fare_and_tip_by_distance_range",Kind="Table"]}[Data]
+				in
+				    avg_fare_and_tip_by_distance_range_Table
+
+	annotation PBI_ResultType = Table
+

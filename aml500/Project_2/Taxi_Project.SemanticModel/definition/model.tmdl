@@ -1,0 +1,34 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["top_10_busiest_pickup_locations","avg_fare_and_tip_by_distance_range","avg_tip_percentage_by_payment_type","avg_trip_distance_by_hour","monthly_revenue_trends","peak_pickup_hours","top_10_busiest_pickup_locations (2)","top_10_longest_trips","total_revenue_by_day","trips_by_passenger_count","trips_with_zero_tips"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.141.1253.0 (25.03)+74f9999a1e95f78c739f3ea2b96ba340e9ba8729
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table top_10_busiest_pickup_locations
+ref table avg_fare_and_tip_by_distance_range
+ref table avg_tip_percentage_by_payment_type
+ref table avg_trip_distance_by_hour
+ref table monthly_revenue_trends
+ref table peak_pickup_hours
+ref table 'top_10_busiest_pickup_locations (2)'
+ref table top_10_longest_trips
+ref table DateTableTemplate_05de3d48-4608-40f2-9d14-a2647fc5d36f
+ref table LocalDateTable_c03f81a0-d57f-44f9-a14c-261ce34dc386
+ref table LocalDateTable_01d36455-3a08-474c-8f6c-6e976499b77f
+ref table total_revenue_by_day
+ref table LocalDateTable_0085439c-60b6-40e2-a58d-051f935500e4
+ref table trips_by_passenger_count
+ref table trips_with_zero_tips
+
+ref cultureInfo en-US
+

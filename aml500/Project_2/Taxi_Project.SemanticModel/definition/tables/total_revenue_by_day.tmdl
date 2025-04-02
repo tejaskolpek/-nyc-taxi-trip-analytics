@@ -1,0 +1,42 @@
+table total_revenue_by_day
+	lineageTag: 570af763-c2b3-4e14-ac6c-5e4f6765dba4
+
+	column trip_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 525ea0de-e1a6-4dc7-9ba3-fea1f817728d
+		summarizeBy: none
+		sourceColumn: trip_date
+
+		variation Variation
+			isDefault
+			relationship: 708bfeaf-57cf-4411-b465-9870084f7f00
+			defaultHierarchy: LocalDateTable_0085439c-60b6-40e2-a58d-051f935500e4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column total_revenue
+		dataType: double
+		lineageTag: 795e273d-3de5-49b5-a10e-a6b5bb65539f
+		summarizeBy: sum
+		sourceColumn: total_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition total_revenue_by_day = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("awsregion=us-east-1;s3outputlocation=s3://mlops-13afe8ab-a794-4f8f-80b6-e210e18b4990/powerbiathena/;profile=default;dsn=Simba Athena", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Source{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    class_taxi_filtered_Schema = AwsDataCatalog_Database{[Name="class_taxi_filtered",Kind="Schema"]}[Data],
+				    total_revenue_by_day_Table = class_taxi_filtered_Schema{[Name="total_revenue_by_day",Kind="Table"]}[Data]
+				in
+				    total_revenue_by_day_Table
+
+	annotation PBI_ResultType = Table
+

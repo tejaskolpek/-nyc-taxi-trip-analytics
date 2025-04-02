@@ -1,0 +1,34 @@
+table avg_tip_percentage_by_payment_type
+	lineageTag: 5c263115-948d-41e7-9a65-d4998b52c80a
+
+	column payment_type
+		dataType: string
+		lineageTag: cd148456-3f76-4021-8f04-ac3e24616803
+		summarizeBy: none
+		sourceColumn: payment_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_tip_percentage
+		dataType: double
+		lineageTag: 2bcee1a1-ade1-4b8c-9440-a7063ab66932
+		summarizeBy: sum
+		sourceColumn: avg_tip_percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition avg_tip_percentage_by_payment_type = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("awsregion=us-east-1;s3outputlocation=s3://mlops-13afe8ab-a794-4f8f-80b6-e210e18b4990/powerbiathena/;profile=default;dsn=Simba Athena", [HierarchicalNavigation=true]),
+				    AwsDataCatalog_Database = Source{[Name="AwsDataCatalog",Kind="Database"]}[Data],
+				    class_taxi_filtered_Schema = AwsDataCatalog_Database{[Name="class_taxi_filtered",Kind="Schema"]}[Data],
+				    avg_tip_percentage_by_payment_type_Table = class_taxi_filtered_Schema{[Name="avg_tip_percentage_by_payment_type",Kind="Table"]}[Data]
+				in
+				    avg_tip_percentage_by_payment_type_Table
+
+	annotation PBI_ResultType = Table
+
